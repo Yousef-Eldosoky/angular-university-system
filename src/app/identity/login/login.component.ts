@@ -1,17 +1,17 @@
 import { NgClass, NgIf } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NgClass, NgIf, ReactiveFormsModule, HttpClientModule],
+  imports: [NgClass, NgIf, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  loginForm: FormGroup;
+  loginForm: FormGroup<{email: FormControl<string | null>, password: FormControl<string | null>}>;
   submitted = false;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
@@ -33,10 +33,20 @@ export class LoginComponent {
       return;
     }
 
-    // console.log('Login successful', this.loginForm.value);
+    console.log('Login successful', this.loginForm.value);
 
-    // TODO: Implement login logic, e.g., API call
-    this.http.post('/api/login?useCookies=true', this.loginForm.value);
+    // Implement login logic, API call
+    this.http.post<string | null>('/api/login?useCookies=true', this.loginForm.value).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {
+        console.log('complete');
+      }
+    });
   }
 
 }
