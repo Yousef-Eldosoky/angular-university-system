@@ -1,9 +1,10 @@
 {
     "/api": {
-        "target": "https://localhost:7172",
+        "target": "http://university.tryasp.net",
         "secure": false,
         "pathRewrite": {
         "^/api": ""
-        }
+        },
+        "changeOrigin": true
     }
 }
