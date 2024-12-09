@@ -1,7 +1,8 @@
 import { NgClass, NgIf } from '@angular/common';
-import { HttpClient} from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { IdentityService } from '../identity.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,20 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 export class LoginComponent {
   loginForm: FormGroup<{email: FormControl<string | null>, password: FormControl<string | null>}>;
   submitted = false;
+  loggingError?: string;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private identity: IdentityService, private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
+
+  ngOnInit() {
+    this.identity.currentUser.subscribe(data => {
+      if(data) {
+        this.router.navigateByUrl('/home');
+      }
     });
   }
 
@@ -33,20 +43,18 @@ export class LoginComponent {
       return;
     }
 
-    console.log('Login successful', this.loginForm.value);
-
     // Implement login logic, API call
-    this.http.post<string | null>('/api/login?useCookies=true', this.loginForm.value).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-      complete: () => {
-        console.log('complete');
+    this.identity.login(this.loginForm.value).subscribe(
+      {
+        error: () => {
+          this.loggingError = "Email or password is incorrect!";
+        },
+        complete: () => {
+          console.log('Login successful', this.loginForm.value);
+          window.location.reload();
+        }
       }
-    });
+    );
   }
 
 }

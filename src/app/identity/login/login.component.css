@@ -43,4 +43,8 @@
   .btn:hover {
     background-color: #72cea6;
   }
+
+  .loggingError {
+    color: red;
+  }
   
