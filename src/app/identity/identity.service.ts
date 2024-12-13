@@ -28,7 +28,7 @@ export class IdentityService {
         next: (data) => {
           this.currentUser.next(data);
         },
-        error: (error) => {
+        error: () => {
           this.currentUser.next(null);
         },
         complete: () => {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { IdentityService } from '../identity/identity.service';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,5 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+  constructor(public identiyService: IdentityService) {}
 }
