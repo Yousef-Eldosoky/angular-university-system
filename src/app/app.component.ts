@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';  // Import MatButtonModule
 import { IdentityService } from './identity/identity.service';
 
 @Component({
@@ -9,11 +7,13 @@ import { IdentityService } from './identity/identity.service';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [RouterModule, MatIconModule, MatButtonModule],
+  imports: [RouterModule],
 })
 
-export class AppComponent {  constructor(private identity: IdentityService) {}
+export class AppComponent {  
   title = "University System";
+
+  constructor(private identity: IdentityService) {}
 
   ngOnInit(): void {
     this.identity.isLoggedIn();

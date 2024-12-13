@@ -1,36 +1,22 @@
-<div class="dashboard-container">
-
-
-  <section class="follow-up">
-    <h2><mat-icon> sentiment_satisfied_alt</mat-icon>
-      follow up</h2>
-    <div class="course-list">
-      <div class="course-card courses">
-        <mat-icon>account_circle</mat-icon>
-        <h3>Personal</h3>
-        <p>Name: {{identiyService.currentUser.value?.email}}</p>
-        <p>address</p>
-        <p>DOB</p>
-      </div>
-      <div class="course-card attendance">
-        <mat-icon>event</mat-icon>
-        <h3>Events</h3>
-        <p>place</p>
-        <p>time</p>
-        <p>guist</p>
-      </div>
-      <div class="course-card quizes">
-        <mat-icon> bar_chart</mat-icon>
-        <h3>GPA</h3>
-        <p>3.7</p>
-      </div>
-      <div class="course-card assignments">
-        <mat-icon>dns</mat-icon>
-        <h3>assignments</h3>
-        <p>angular: date</p>
-        <p>mobile devolopment: date</p>
-        <p>after effect: date</p>
-      </div>
-    </div>
-  </section>
+<header>
+  <h1>Welcome Back!</h1>
+  <div class="categories">
+    <button class="category" routerLink="/home/dashboard" routerLinkActive="active">    <mat-icon>dashboard</mat-icon>
+      dashboard</button>
+    <button class="category" routerLink="/home/course-management" routerLinkActive="active"><mat-icon>swap_vert</mat-icon>
+      course management</button>
+    <button class="category" routerLink="/home/attendance" routerLinkActive="active"><mat-icon>done_outline</mat-icon>
+      attendance</button>
+    <button class="category" routerLink="/home/grading-system" routerLinkActive="active"><mat-icon> list_alt</mat-icon>
+      grading system</button>
+    <button class="category" routerLink="/home/exams" routerLinkActive="active"><mat-icon>library_books</mat-icon>
+      exams</button>
+    <button class="category" routerLink="/home/QA" routerLinkActive="active"><mat-icon>sms</mat-icon>
+      QA</button>
+    <button class="category" routerLink="/home/courses" routerLinkActive="active"><mat-icon>grid_on</mat-icon>
+      courses</button>
+  </div>
+</header>
+<div>
+  <router-outlet></router-outlet>
 </div>

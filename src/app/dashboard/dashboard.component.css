@@ -1,0 +1,58 @@
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  
+  .follow-up {
+    margin-top: 20px;
+  }
+  
+  .follow-up h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .course-list {
+    display: grid;
+    height: 60vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;  
+  }
+  
+  .course-card {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .course-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .course-card p {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  
+  
+  .courses {
+    background-color: #ffe0e0;
+  }
+  
+  .attendance {
+    background-color: #ffe5b4;
+  }
+  
+  .quizes {
+    background-color: #d6d4f9;
+  }
+  
+  .assignments {
+    background-color: #d8f7d6;
+  }
+  

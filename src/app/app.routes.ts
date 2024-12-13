@@ -5,11 +5,15 @@ import * as AuthGuard from './auth-guard.service';
 import * as LoginGuard from './identity/auth.guard.service';
 import { RegisterComponent } from './identity/register/register.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
-    {path: "", redirectTo: "/home", pathMatch: "full"},
-    {path: "home" , component: HomeComponent, canActivate: [AuthGuard.AuthGuardService] },
+    {path: "", redirectTo: "/home/dashboard", pathMatch: "full"},
+    {path: "home" , component: HomeComponent, canActivate: [AuthGuard.AuthGuardService], 
+        children: [
+            {path: 'attendance', component: AttendanceComponent},
+            {path: 'dashboard', component: DashboardComponent},
+        ]},
     {path: 'login', component: LoginComponent, canActivate: [LoginGuard.AuthGuardService]},
     {path: 'register', component: RegisterComponent, canActivate: [LoginGuard.AuthGuardService]},
-    {path: 'attendance', component: AttendanceComponent, canActivate: [AuthGuard.AuthGuardService]}
 ];
