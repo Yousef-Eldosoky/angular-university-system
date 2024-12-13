@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { CourseManagementComponent } from "./course-management/course-management.component";
 import { MatButtonModule } from '@angular/material/button';  // Import MatButtonModule
 
 
