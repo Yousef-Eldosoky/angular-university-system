@@ -32,7 +32,8 @@ import { IdentityService } from './identity/identity.service';
 `,
 })
 export class AppComponent {  constructor(private identity: IdentityService) {}
-
+  title = "University System";
+  
   ngOnInit(): void {
     this.identity.isLoggedIn();
   }
