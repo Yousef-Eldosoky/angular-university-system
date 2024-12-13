@@ -1,1 +1,22 @@
-<router-outlet />
+<header>
+  <h1>Welcome Back!</h1>
+  <div class="categories">
+    <button class="category" routerLink="/home" routerLinkActive="active">    <mat-icon>dashboard</mat-icon>
+      dashboard</button>
+    <button class="category" routerLink="/course-management" routerLinkActive="active"><mat-icon>swap_vert</mat-icon>
+      course management</button>
+    <button class="category" routerLink="/attendance" routerLinkActive="active"><mat-icon>done_outline</mat-icon>
+      attendance</button>
+    <button class="category" routerLink="/grading-system" routerLinkActive="active"><mat-icon> list_alt</mat-icon>
+      grading system</button>
+    <button class="category" routerLink="/exams" routerLinkActive="active"><mat-icon>library_books</mat-icon>
+      exams</button>
+    <button class="category" routerLink="/QA" routerLinkActive="active"><mat-icon>sms</mat-icon>
+      QA</button>
+    <button class="category" routerLink="/courses" routerLinkActive="active"><mat-icon>grid_on</mat-icon>
+      courses</button>
+  </div>
+</header>
+<div>
+  <router-outlet></router-outlet>
+</div>
