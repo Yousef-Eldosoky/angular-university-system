@@ -3,6 +3,7 @@ import { UserLogin } from './user-login';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CurrentUser } from './current-user';
+import { UserRegister } from './user-register';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,11 @@ export class IdentityService {
 
   login(user: Partial<UserLogin>): Observable<string | null>  {
     return this.http.post<string | null>('/api/login?useCookies=true', user);
+  }
+
+  // Add register
+  register(user: Partial<UserRegister>): Observable<any> {
+    return this.http.post('/api/register', user);
   }
 
   isLoggedIn() {
