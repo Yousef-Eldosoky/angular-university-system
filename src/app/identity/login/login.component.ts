@@ -23,14 +23,6 @@ export class LoginComponent {
     });
   }
 
-  ngOnInit() {
-    this.identity.currentUser.subscribe(data => {
-      if(data) {
-        this.router.navigateByUrl('/home');
-      }
-    });
-  }
-
   // Getter for easier access to form controls
   get f() {
     return this.loginForm.controls;

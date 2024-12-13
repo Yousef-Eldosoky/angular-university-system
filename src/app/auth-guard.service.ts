@@ -9,7 +9,7 @@ import { filter, map } from 'rxjs';
 export class AuthGuardService implements CanActivate {
 
   constructor(private router: Router, private identity: IdentityService) { }
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
+  canActivate(): MaybeAsync<GuardResult> {
       return this.identity.currentUser.pipe(
         filter((currentUser) => currentUser !== undefined),
         map((currentUser) => {
