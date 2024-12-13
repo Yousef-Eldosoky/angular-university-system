@@ -1,0 +1,63 @@
+<div class="attendance-container">
+  <h2>Attendance</h2>
+
+  <form (ngSubmit)="markAttendance()" #attendanceForm="ngForm">
+    <div>
+      <label for="studentName">Student Name :</label>
+      <div class="input-icon">
+        <i class="fas fa-user"></i>
+        <input
+          type="text"
+          id="studentName"
+          name="studentName"
+          [(ngModel)]="studentName"
+          required/>
+      </div>
+    </div>
+
+
+    <div>
+      <label for="studentCode">Student Code :</label>
+      <div class="input-icon">
+        <i class="fas fa-id-card"></i>
+        <input
+          type="text"
+          id="studentCode"
+          name="studentCode"
+          [(ngModel)]="studentCode"
+          required/>
+      </div>
+    </div>
+
+    <div>
+      <label for="status">Status :</label>
+      <div class="input-icon">
+        <i class="fas fa-check-circle"></i>
+        <select id="status" name="status" [(ngModel)]="status" required>
+          <option value="The student is present">present</option>
+          <option value="The student is absent">absent</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!attendanceForm.valid">Status Record</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>I D</th>
+        <th>Name</th>
+        <th>Status for students</th>
+        <th>The date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of attendanceRecords">
+        <td>{{ record.code }}</td>
+        <td>{{ record.name }}</td>
+        <td>{{ record.status }}</td>
+        <td>{{ record.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
