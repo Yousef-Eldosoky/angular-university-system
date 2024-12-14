@@ -23,6 +23,20 @@ button.active {
   border: none;
 }
 mat-icon {
-  font-size:20px;
+  font-size:25px;
+
 }
 
+.category {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.category mat-icon {
+  margin-right: 8px;
+}

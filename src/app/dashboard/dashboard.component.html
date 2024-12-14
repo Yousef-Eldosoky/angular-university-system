@@ -3,36 +3,45 @@
 
     <section class="follow-up">
       <h2><mat-icon> sentiment_satisfied_alt</mat-icon>
-        follow up</h2>
+        Follow up</h2>
       <div class="course-list">
         <div class="course-card courses">
           <mat-icon>account_circle</mat-icon>
           <h3>Personal</h3>
-          <p>Email: {{identiyService.currentUser.value?.email}}</p>
-          <p>Name: {{identiyService.currentUser.value?.student?.name}}</p>
-          <p>address</p>
-          <p>DOB</p>
+          <p><strong>Email:</strong> {{identiyService.currentUser.value?.email}}</p>
+          <p><strong>Name:</strong> {{identiyService.currentUser.value?.student?.name}}</p>
+          <p><strong>Address:</strong></p>
+          <p><strong>DOB:</strong></p>
         </div>
         <div class="course-card attendance">
           <mat-icon>event</mat-icon>
           <h3>Events</h3>
-          <p>place</p>
-          <p>time</p>
-          <p>guist</p>
+
+          <div *ngFor="let event of events">
+            <p><strong>Place:</strong> {{ event.place }}</p>
+            <p><strong>Time:</strong> {{ event.time }}</p>
+            <p><strong>Guest:</strong></p>
+            <ul>
+              <li *ngFor="let guest of event.guest">{{ guest }}</li>
+            </ul>
+          </div>
         </div>
+
         <div class="course-card quizes">
           <mat-icon> bar_chart</mat-icon>
           <h3>GPA</h3>
-          <p> {{identiyService.currentUser.value?.student?.gpa | number: '1.1-2' }} </p>
+          <p> <strong>GPA:</strong> {{identiyService.currentUser.value?.student?.gpa | number: '1.1-2' }} </p>
+          <p><strong>University rank:</strong></p>
+          <p><strong>Major rank:</strong></p>
         </div>
         <div class="course-card assignments">
           <mat-icon>dns</mat-icon>
-          <h3>assignments</h3>
-          <p>angular: date</p>
-          <p>mobile devolopment: date</p>
-          <p>after effect: date</p>
+          <h3>Assignments</h3>
+          <p><strong>Angular:</strong> {{ currentDate | date: 'fullDate' }}</p>
+          <p><strong>Mobile Development:</strong> {{ currentDate | date: 'fullDate' }}</p>
+          <p><strong>After Effect: </strong>{{ currentDate | date: 'fullDate' }}</p>
         </div>
+
       </div>
     </section>
   </div>
-  
