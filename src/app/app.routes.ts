@@ -17,6 +17,11 @@ export const routes: Routes = [
         children: [
             {path: 'attendance', component: AttendanceComponent},
             {path: 'dashboard', component: DashboardComponent},
+            {path: 'course-management', component: CourseManagementComponent},
+            {path: 'grading-system', component: GradingSystemComponent, children: [
+                {path: 'form', component: StudentGradesFormComponent},
+                {path: 'display', component: StudentGradesDisplayComponent},
+            ]},
         ]},
     {path: 'login', component: LoginComponent, canActivate: [LoginGuard.AuthGuardService]},
     {path: 'register', component: RegisterComponent, canActivate: [LoginGuard.AuthGuardService]},
