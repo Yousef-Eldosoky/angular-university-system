@@ -6,6 +6,7 @@ import * as LoginGuard from './identity/auth.guard.service';
 import { RegisterComponent } from './identity/register/register.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { QaComponent } from './qa/qa.component';
 
 export const routes: Routes = [
     {path: "", redirectTo: "/home/dashboard", pathMatch: "full"},
@@ -13,6 +14,7 @@ export const routes: Routes = [
         children: [
             {path: 'attendance', component: AttendanceComponent},
             {path: 'dashboard', component: DashboardComponent},
+            {path: 'QA', component: QaComponent}
         ]},
     {path: 'login', component: LoginComponent, canActivate: [LoginGuard.AuthGuardService]},
     {path: 'register', component: RegisterComponent, canActivate: [LoginGuard.AuthGuardService]},

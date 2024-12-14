@@ -1,0 +1,104 @@
+<div class="qa-container">
+  <h2>
+    <mat-icon>question_answer</mat-icon>
+    Questions & Answers
+  </h2>
+  
+  <!-- Ask Question Section (for students) -->
+  <div class="ask-question" *ngIf="isStudent">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>add_circle</mat-icon>
+        </div>
+        <mat-card-title>Ask a Question</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-group">
+          <label>Question Title</label>
+          <input type="text" 
+                 [(ngModel)]="newQuestion.title" 
+                 placeholder="Enter your question title" 
+                 class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Question Details</label>
+          <textarea [(ngModel)]="newQuestion.content" 
+                    placeholder="Type your question here..." 
+                    rows="4"
+                    class="form-control"></textarea>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="askQuestion()">
+          <mat-icon>send</mat-icon>
+          Submit Question
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!-- Questions List -->
+  <div class="questions-list">
+    <mat-card *ngFor="let question of questions" class="question-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>account_circle</mat-icon>
+        </div>
+        <mat-card-title>{{ question.title }}</mat-card-title>
+        <mat-card-subtitle>
+          Asked by {{ question.studentName }} on {{ question.createdAt | date }}
+        </mat-card-subtitle>
+        <button *ngIf="userId === question.studentId" 
+                mat-icon-button color="warn"
+                (click)="deleteQuestion(question.id!)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="question-content">{{ question.content }}</p>
+
+        <!-- Answers Section -->
+        <div class="answers-section">
+          <h3>
+            <mat-icon>comment</mat-icon>
+            Answers
+          </h3>
+          <mat-card *ngFor="let answer of question.answers" class="answer-card">
+            <mat-card-header>
+              <div mat-card-avatar>
+                <mat-icon>school</mat-icon>
+              </div>
+              <mat-card-title>{{ answer.professorName }}</mat-card-title>
+              <mat-card-subtitle>{{ answer.createdAt | date }}</mat-card-subtitle>
+              <button *ngIf="userId === answer.professorId" 
+                      mat-icon-button color="warn"
+                      (click)="deleteAnswer(question.id!, answer.id!)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ answer.content }}</p>
+            </mat-card-content>
+          </mat-card>
+
+          <!-- Add Answer Form (for professors) -->
+          <div class="add-answer" *ngIf="isProfessor">
+            <div class="form-group">
+              <label>Write your answer</label>
+              <textarea [(ngModel)]="newAnswer[question.id!]" 
+                        placeholder="Write your answer..." 
+                        rows="3"
+                        class="form-control"></textarea>
+            </div>
+            <button mat-raised-button color="primary" 
+                    (click)="addAnswer(question.id!)">
+              <mat-icon>reply</mat-icon>
+              Submit Answer
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
