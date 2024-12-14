@@ -1,0 +1,26 @@
+<div class="container">
+<div class="form-group">
+  <label for="studentName">
+    <i class="fas fa-user"></i> Student Name:
+  </label>
+  <input type="text" id="studentName" [(ngModel)]="studentName" placeholder="Enter student's name" />
+</div>
+
+<div class="form-group">
+  <label for="studentSubject">
+    <i class="fas fa-book"></i> Subject:
+  </label>
+  <input type="text" id="studentSubject" [(ngModel)]="studentSubject" placeholder="Enter subject name" />
+</div>
+
+<div class="form-group">
+  <label for="studentGrade">
+    <i class="fas fa-clipboard"></i> Grade:
+  </label>
+  <input type="number" id="studentGrade" [(ngModel)]="studentGrade" placeholder="Enter grade (0 - 100)" />
+</div>
+
+<button class="btn" (click)="addGrade()">
+  <i class="fas fa-plus"></i> Add Grade
+</button>
+</div>
