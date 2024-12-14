@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th><i class="fas fa-user"></i> Student Name</th>
+      <th><i class="fas fa-book"></i> Subject</th>
+      <th><i class="fas fa-clipboard"></i> Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.name }}</td>
+      <td>{{ student.subject }}</td>
+      <td>{{ student.grade }}</td>
+    </tr>
+  </tbody>
+</table>
