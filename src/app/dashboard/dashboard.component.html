@@ -8,30 +8,40 @@
         <div class="course-card courses">
           <mat-icon>account_circle</mat-icon>
           <h3>Personal</h3>
-          <p>Email: {{identiyService.currentUser.value?.email}}</p>
-          <p>Name: {{identiyService.currentUser.value?.student?.name}}</p>
-          <p>Address</p>
-          <p>DOB</p>
+          <p><strong>Email:</strong> {{identiyService.currentUser.value?.email}}</p>
+          <p><strong>Name:</strong> {{identiyService.currentUser.value?.student?.name}}</p>
+          <p><strong>Address:</strong> California </p>
+          <p><strong>Department:</strong></p>
         </div>
         <div class="course-card attendance">
           <mat-icon>event</mat-icon>
           <h3>Events</h3>
-          <p>Place</p>
-          <p>Time</p>
-          <p>Guist</p>
+
+          <div *ngFor="let event of events">
+            <p><strong>Place:</strong> {{ event.place }}</p>
+            <p><strong>Time:</strong> {{ event.time }}</p>
+            <p><strong>Guest:</strong></p>
+            <ul>
+              <li *ngFor="let guest of event.guest">{{ guest }}</li>
+            </ul>
+          </div>
         </div>
+
         <div class="course-card quizes">
           <mat-icon> bar_chart</mat-icon>
           <h3>GPA</h3>
-          <p> {{identiyService.currentUser.value?.student?.gpa | number: '1.1-2' }} </p>
+          <p> <strong>GPA:</strong> {{identiyService.currentUser.value?.student?.gpa | number: '1.1-2' }} </p>
+          <p><strong>University rank:</strong></p>
+          <p><strong>Major rank:</strong></p>
         </div>
         <div class="course-card assignments">
           <mat-icon>dns</mat-icon>
           <h3>Assignments</h3>
-          <p>Angular: date</p>
-          <p>Mobile devolopment: date</p>
-          <p>After effect: date</p>
+          <p><strong>Angular:</strong> {{ currentDate | date: 'fullDate' }}</p>
+          <p><strong>Mobile Development:</strong> {{ currentDate | date: 'fullDate' }}</p>
+          <p><strong>After Effect: </strong>{{ currentDate | date: 'fullDate' }}</p>
         </div>
+
       </div>
     </section>
   </div>
