@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IdentityService } from '../identity/identity.service';
 import { MatIconModule } from '@angular/material/icon';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, DecimalPipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

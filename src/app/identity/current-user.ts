@@ -1,4 +1,11 @@
 export interface CurrentUser {
     email: string,
-    isEmailConfirmed: boolean
+    isEmailConfirmed: boolean,
+    student: Student
+}
+
+interface Student {
+    id: string,
+    name: string,
+    gpa: number
 }

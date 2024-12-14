@@ -8,7 +8,8 @@
         <div class="course-card courses">
           <mat-icon>account_circle</mat-icon>
           <h3>Personal</h3>
-          <p>Name: {{identiyService.currentUser.value?.email}}</p>
+          <p>Email: {{identiyService.currentUser.value?.email}}</p>
+          <p>Name: {{identiyService.currentUser.value?.student?.name}}</p>
           <p>address</p>
           <p>DOB</p>
         </div>
@@ -22,7 +23,7 @@
         <div class="course-card quizes">
           <mat-icon> bar_chart</mat-icon>
           <h3>GPA</h3>
-          <p>3.7</p>
+          <p> {{identiyService.currentUser.value?.student?.gpa | number: '1.1-2' }} </p>
         </div>
         <div class="course-card assignments">
           <mat-icon>dns</mat-icon>
