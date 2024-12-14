@@ -1,0 +1,23 @@
+<div class="course-management">
+  <h1>Course Management</h1>
+
+  <div class="course-section">
+    <div class="course-column">
+      <h2>Enrolled Courses</h2>
+      <div *ngFor="let course of enrolledCourses" class="course-item">
+        <span class="course-name">{{ course.name }}</span>
+        <button mat-button (click)="dropCourse(course)">Drop</button>
+      </div>
+    </div>
+
+    <div class="course-column">
+      <h2>Available Courses</h2>
+      <div *ngFor="let course of availableCourses" class="course-item">
+        <span class="course-name">{{ course.name }}</span>
+        <button mat-button (click)="addCourse(course)" [disabled]="isCourseEnrolled(course)">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
