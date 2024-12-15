@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://localhost:7172",
+        "target": "https://university.tryasp.net",
         "secure": false,
         "pathRewrite": {
         "^/api": ""
