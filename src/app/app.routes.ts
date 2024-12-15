@@ -12,6 +12,7 @@ import { GradingSystemComponent } from './grading-system/grading-system.componen
 import { StudentGradesFormComponent } from './student-grades-form/student-grades-form.component';
 import { StudentGradesDisplayComponent } from './student-grades-display/student-grades-display.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
     {path: "", redirectTo: "/home/dashboard", pathMatch: "full"},
@@ -22,11 +23,14 @@ export const routes: Routes = [
             {path: 'QA', component: QaComponent},
             {path: 'course-management', component: CourseManagementComponent},
             {path: 'maintenance', component: MaintenanceComponent},
+            {path: 'courses', component: MaintenanceComponent},
             {path: 'grading-system', component: GradingSystemComponent, children: [
                 {path: 'form', component: StudentGradesFormComponent},
                 {path: 'display', component: StudentGradesDisplayComponent},
             ]},
+            {path: "**", component: NotFoundComponent}
         ]},
     {path: 'login', component: LoginComponent, canActivate: [LoginGuard.AuthGuardService]},
     {path: 'register', component: RegisterComponent, canActivate: [LoginGuard.AuthGuardService]},
+    {path: "**", component: NotFoundComponent}
 ];
