@@ -1,0 +1,50 @@
+<div class="qa-container">
+  <!-- Question Form -->
+  <div class="question-form">
+    <h2>Ask a Question</h2>
+    <form (ngSubmit)="submitQuestion()">
+      <div class="form-group">
+        <label for="courseId">Course ID:</label>
+        <input type="number" id="courseId" [(ngModel)]="newQuestion.courseId" name="courseId" required>
+      </div>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" [(ngModel)]="newQuestion.title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="content">Question:</label>
+        <textarea id="content" [(ngModel)]="newQuestion.content" name="content" required></textarea>
+      </div>
+      <button type="submit">Submit Question</button>
+    </form>
+  </div>
+
+  <!-- Questions List -->
+  <div class="questions-list">
+    <h2>Questions</h2>
+    <div class="question-card" *ngFor="let question of questions">
+      <div class="question-header">
+        <h3>{{ question.title }}</h3>
+        <button (click)="deleteQuestion(question.id)" class="delete-btn">Delete</button>
+      </div>
+      <p>{{ question.content }}</p>
+
+      <!-- Answers for this question -->
+      <div class="answers-section">
+        <h4>Answers</h4>
+        <div class="answer-card" *ngFor="let answer of question.answers">
+          <p>{{ answer.content }}</p>
+          <button (click)="deleteAnswer(answer.id)" class="delete-btn">Delete</button>
+        </div>
+
+        <!-- Answer Form -->
+        <form (ngSubmit)="submitAnswer(question.id)" class="answer-form">
+          <div class="form-group">
+            <textarea [(ngModel)]="newAnswer.content" name="content" placeholder="Write your answer..." required></textarea>
+          </div>
+          <button type="submit">Submit Answer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
