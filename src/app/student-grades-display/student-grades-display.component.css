@@ -44,8 +44,18 @@ tr:hover td {
   cursor: pointer;
   font-size: 14px;
 }
-
 .delete-button:hover {
   background-color: #b71c1c;
   transition: background-color 0.3s ease;
+}
+@media (max-width: 400px) {
+  th,
+  td {
+    font-size: 10px;
+  }
+  .delete-button {
+    width: 100%;
+    text-align: center;
+    padding: 5px 10px;
+  }
 }
