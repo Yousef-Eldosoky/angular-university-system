@@ -24,6 +24,8 @@
   font-size: 24px;
   margin-bottom: 15px;
   color: black;
+  overflow-y: auto;
+
 }
 
 .course-item {
@@ -58,5 +60,14 @@ button:hover {
   background-color: #2980b9;
 }
 
+@media (max-width: 768px) {
+  .course-section {
+    flex-direction: column; 
+  }
 
+  .course-column {
+    width: 100%;
+    min-width: unset;
+  }
+}
 
