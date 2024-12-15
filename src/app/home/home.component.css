@@ -48,3 +48,11 @@ mat-icon {
   white-space: nowrap; / Prevent wrapping of buttons /
   padding: 10px 0; / Optional padding for aesthetics */
 }
+
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+

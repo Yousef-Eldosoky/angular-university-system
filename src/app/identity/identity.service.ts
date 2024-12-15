@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CurrentUser } from './current-user';
 import { UserRegister } from './user-register';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { UserRegister } from './user-register';
 export class IdentityService {
   currentUser = new BehaviorSubject<CurrentUser | null | undefined>(undefined);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(user: Partial<UserLogin>): Observable<string | null>  {
     return this.http.post<string | null>('/api/login?useCookies=true', user);
@@ -33,6 +34,18 @@ export class IdentityService {
         },
         complete: () => {
           console.log('completed');
+        }
+      }
+    );
+  }
+
+  logout() {
+    this.http.post('/api/logout', {}).subscribe(
+      {
+        complete: () => {
+          console.log('Logout completed');
+          this.currentUser.next(null);
+          this.router.navigateByUrl('/login');
         }
       }
     );
