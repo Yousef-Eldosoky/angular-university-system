@@ -16,7 +16,7 @@ export class DashboardComponent {
   currentDate = new Date();
 
   events = [
-    { place: 'Conference Room A', time: '10:00 AM - 12:00 PM', guest: ['dr.nabil'] },
+    { place: 'Conference Room A', time: '10:00 AM - 12:00 PM', guest: ['DR.Nabil'] },
   ];
 
 
