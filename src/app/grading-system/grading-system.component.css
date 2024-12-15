@@ -1,0 +1,36 @@
+.categories {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #4caf50;
+  
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category:hover {
+  background-color: #43a047;
+
+}
+
+.category.active {
+  background-color: #2e7d32;
+
+}
+
+mat-icon {
+  font-size: 18px;
+}
