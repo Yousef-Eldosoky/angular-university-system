@@ -3,27 +3,59 @@ table {
   border-collapse: collapse;
   margin-top: 20px;
   font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 th {
   background-color: #fff9c4;
-  color:black;
+  color: black;
   padding: 12px;
   text-align: left;
   font-size: 16px;
+  border-bottom: 2px solid #fdd835;
 }
 
 th i {
   margin-right: 8px;
 }
+
 td {
   background-color: #ffe5b4;
   color: black;
   padding: 12px;
   text-align: left;
   font-size: 14px;
+  border-bottom: 1px solid #fdd835;
 }
 
 tr:hover td {
   background-color: #fdd835;
+  color: black;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.delete-button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.delete-button:hover {
+  background-color: #b71c1c;
+  transition: background-color 0.3s ease;
+}
+@media (max-width: 400px) {
+  th,
+  td {
+    font-size: 10px;
+  }
+  .delete-button {
+    width: 100%;
+    text-align: center;
+    padding: 5px 10px;
+  }
 }

@@ -4,13 +4,20 @@
       <th><i class="fas fa-user"></i> Student Name</th>
       <th><i class="fas fa-book"></i> Subject</th>
       <th><i class="fas fa-clipboard"></i> Grade</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let student of students">
+    <tr *ngFor="let student of students; let i = index">
       <td>{{ student.name }}</td>
       <td>{{ student.subject }}</td>
       <td>{{ student.grade }}</td>
+      <td>
+        <button (click)="deleteStudent(i)" class="delete-button">
+
+          <i class="fas fa-trash"></i> DELETE
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
