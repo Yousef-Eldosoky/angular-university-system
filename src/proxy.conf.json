@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://university.tryasp.net",
+        "target": "http://university.tryasp.net",
         "secure": false,
         "pathRewrite": {
         "^/api": ""
