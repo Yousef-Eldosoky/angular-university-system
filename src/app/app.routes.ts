@@ -10,6 +10,7 @@ import { CourseManagementComponent } from './course-management/course-management
 import { GradingSystemComponent } from './grading-system/grading-system.component';
 import { StudentGradesFormComponent } from './student-grades-form/student-grades-form.component';
 import { StudentGradesDisplayComponent } from './student-grades-display/student-grades-display.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 export const routes: Routes = [
     {path: "", redirectTo: "/home/dashboard", pathMatch: "full"},
@@ -18,6 +19,7 @@ export const routes: Routes = [
             {path: 'attendance', component: AttendanceComponent},
             {path: 'dashboard', component: DashboardComponent},
             {path: 'course-management', component: CourseManagementComponent},
+            {path: 'maintenance', component: MaintenanceComponent},
             {path: 'grading-system', component: GradingSystemComponent, children: [
                 {path: 'form', component: StudentGradesFormComponent},
                 {path: 'display', component: StudentGradesDisplayComponent},
