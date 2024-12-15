@@ -1,96 +1,60 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { QaService } from './services/qa.service';
-import { Question, Answer } from './models/question.model';
+import { QaService } from './qa.service';
+import { Question } from './interface/question';
+import { QuestionDto } from './interface/question-dto';
+import { AnswerDto } from './interface/answer-dto';
+
 
 @Component({
   selector: 'app-qa',
-  standalone: true,
-  imports: [
-    CommonModule, 
-    FormsModule, 
-    MatIconModule, 
-    MatButtonModule, 
-    MatInputModule,
-    MatCardModule,
-    MatFormFieldModule
-  ],
-  providers: [provideAnimations()],
   templateUrl: './qa.component.html',
-  styleUrls: ['./qa.component.css']
+  styleUrls: ['./qa.component.css'],
+  standalone: true,
+  imports: [CommonModule, FormsModule]
 })
 export class QaComponent implements OnInit {
-  @Input() courseId!: string;
   questions: Question[] = [];
-  newQuestion: { title: string; content: string } = { title: '', content: '' };
-  newAnswer: { [key: string]: string } = {};
-  isStudent = true; // This should be determined based on user role
-  isProfessor = false; // This should be determined based on user role
-  userId = ''; // This should be set from auth service
-  userName = ''; // This should be set from auth service
+  newQuestion: QuestionDto = { courseId: 0, title: '', content: '' };
+  newAnswer: AnswerDto = { questionId: 0, content: '' };
 
-  constructor(private qaService: QaService) {}
+  constructor(private qa: QaService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadQuestions();
   }
 
-  loadQuestions() {
-    this.qaService.getQuestionsByCourse(this.courseId)
-      .subscribe(questions => {
-        this.questions = questions;
-      });
+  loadQuestions(): void {
+    this.qa.loadQuestions().subscribe(
+      questions => this.questions = questions
+    );
   }
 
-  askQuestion() {
-    if (!this.newQuestion.title.trim() || !this.newQuestion.content.trim()) return;
-
-    const question = {
-      courseId: this.courseId,
-      studentId: this.userId,
-      studentName: this.userName,
-      title: this.newQuestion.title,
-      content: this.newQuestion.content
-    };
-
-    this.qaService.addQuestion(question).subscribe(() => {
+  submitQuestion(): void {
+    this.qa.submitQuestion(this.newQuestion).subscribe(() => {
       this.loadQuestions();
-      this.newQuestion = { title: '', content: '' };
+      this.newQuestion = { courseId: 0, title: '', content: '' };
     });
   }
 
-  addAnswer(questionId: string) {
-    if (!this.newAnswer[questionId]?.trim()) return;
-
-    const answer = {
-      questionId,
-      professorId: this.userId,
-      professorName: this.userName,
-      content: this.newAnswer[questionId]
-    };
-
-    this.qaService.addAnswer(questionId, answer).subscribe(() => {
+  submitAnswer(questionId: number): void {
+    this.qa.submitAnswer(questionId, this.newAnswer).subscribe(() => {
       this.loadQuestions();
-      this.newAnswer[questionId] = '';
+      this.newAnswer = { questionId: 0, content: '' };
     });
   }
 
-  deleteQuestion(questionId: string) {
-    this.qaService.deleteQuestion(questionId).subscribe(() => {
+  deleteQuestion(questionId: number): void {
+    this.qa.deleteQuestion(questionId).subscribe(() => {
       this.loadQuestions();
     });
   }
 
-  deleteAnswer(questionId: string, answerId: string) {
-    this.qaService.deleteAnswer(questionId, answerId).subscribe(() => {
+  deleteAnswer(answerId: number): void {
+    this.qa.deleteAnswer(answerId).subscribe(() => {
       this.loadQuestions();
     });
   }
+  
 }
