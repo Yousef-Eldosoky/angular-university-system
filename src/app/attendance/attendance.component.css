@@ -25,7 +25,7 @@ form div {
 input,
 select {
   width: 80%;
-  /* ضبط العرض ليشمل الجزء الأكبر */
+  /* Adjust width*/
   padding: 12px 15px;
   margin: 10px 0;
   border: 2px solid #6e6c6c;
@@ -110,7 +110,7 @@ td:hover {
 .input-icon {
   margin-left: 10px;
   width: 100%;
-  /* جعل الأيقونة تحاذي الحقل بالكامل */
+  /* for icon style*/
   position: relative;
   display: inline-block;
 }
@@ -132,7 +132,7 @@ td:hover {
   text-align: left;
   display: block;
   width: 80%;
-  /* محاذاة الرسائل مع الحقول */
+  /* aligin the input*/
   margin-left: auto;
   margin-right: auto;
 }

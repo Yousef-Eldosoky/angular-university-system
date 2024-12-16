@@ -45,9 +45,6 @@ export class CourseManagementComponent {
     if (!this.isCourseEnrolled(course)) {
       this.enrolledCourses.push(course);
       this.availableCourses = this.availableCourses.filter(c => c.id !== course.id);
-      this.snackBar.open(`${course.name} has been added!`, 'Close', { duration: 2000 });
-    } else {
-      this.snackBar.open(`${course.name} is already enrolled!`, 'Close', { duration: 2000 });
     }
   }
 
@@ -55,6 +52,5 @@ export class CourseManagementComponent {
     // Remove the course from the enrolled list and add it back to available courses
     this.enrolledCourses = this.enrolledCourses.filter(c => c.id !== course.id);
     this.availableCourses.push(course);
-    this.snackBar.open(`${course.name} has been dropped!`, 'Close', { duration: 2000 });
   }
 }
