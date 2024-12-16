@@ -20,7 +20,7 @@
           <div *ngFor="let event of events">
             <p><strong>Place:</strong> {{ event.place }}</p>
             <p><strong>Time:</strong> {{ event.time }}</p>
-            <p><strong>Guest:</strong></p>
+            <p><strong>Guests:</strong></p>
             <ul>
               <li *ngFor="let guest of event.guest">{{ guest }}</li>
             </ul>
